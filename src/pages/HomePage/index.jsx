@@ -1,4 +1,5 @@
 import { Nav } from "../../components/NavMenu";
+import { RecipeList } from "../../components/RecipeList";
 import { SearchSection } from "../../components/SearchSection";
 
 export function HomePage() {
@@ -12,7 +13,7 @@ export function HomePage() {
         <Nav />
         <SearchSection />
         <section>
-          
+          <RecipeList/>
         </section>
       </main>
     </>
