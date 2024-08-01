@@ -1,33 +1,65 @@
+import { StyledAnchor, StyledTitle } from "../../styles/typography";
+import { StyledNav } from "./style";
+import { FaInstagram } from "react-icons/fa6";
+import { IoLogoYoutube } from "react-icons/io";
+import { FaFacebook } from "react-icons/fa";
+
 export function Nav() {
   return (
-    <nav>
+    <StyledNav>
       <div>
-        <h4>RecipeApp</h4>
+        <div>
+          <StyledTitle number={5}>RecipeApp</StyledTitle>
+        </div>
+
+        <ul>
+          <li>
+            <StyledAnchor href="#" color="golden">
+              <FaInstagram size={19} />
+            </StyledAnchor>
+          </li>
+          <li>
+            <StyledAnchor href="#" color="golden">
+              <IoLogoYoutube  size={20} />
+            </StyledAnchor>
+          </li>
+          <li>
+            <StyledAnchor href="#" color="golden">
+              <FaFacebook size={18} />
+            </StyledAnchor>
+          </li>
+        </ul>
       </div>
       <ul>
         <div>
           <li>
-            <a href="#">Recipes</a>
+            <StyledAnchor href="#">Recipes</StyledAnchor>
           </li>
           <li>
-            <a href="#">About</a>
+            <StyledAnchor href="#">About</StyledAnchor>
           </li>
           <li>
-            <a href="#">Contact</a>
+            <StyledAnchor href="#">Contact</StyledAnchor>
           </li>
         </div>
         <div>
-          <li>
-            <a href="#">IG</a>
+        <li>
+            <StyledAnchor href="#" color="golden">
+              <FaInstagram size={19} />
+            </StyledAnchor>
           </li>
           <li>
-            <a href="#">YT</a>
+            <StyledAnchor href="#" color="golden">
+              <IoLogoYoutube  size={20} />
+            </StyledAnchor>
           </li>
           <li>
-            <a href="#">FB</a>
+            <StyledAnchor href="#" color="golden">
+              <FaFacebook size={18} />
+            </StyledAnchor>
           </li>
         </div>
       </ul>
-    </nav>
+    </StyledNav>
   );
 }
