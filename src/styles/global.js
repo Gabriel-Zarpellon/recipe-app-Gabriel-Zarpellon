@@ -14,6 +14,9 @@ export const GlobalStyle = createGlobalStyle`
     --green-text-color: #93b060;
     --green-background-color: #f3f5c4;
 
+    --purple-text-color: #7472b1;
+    --purple-background-color: #efedfa;
+
     --red-text-color: #f8716b;
     --red-background-color: #fdeae3;
 
@@ -22,6 +25,10 @@ export const GlobalStyle = createGlobalStyle`
 
     --blue-text-color: #87afc8;
     --blue-background-color: #e8f5fb;
+
+    --orange-text-color: #e19849;
+    --orange-background-color: #fff1ce;
+   
 }
 
 * {
