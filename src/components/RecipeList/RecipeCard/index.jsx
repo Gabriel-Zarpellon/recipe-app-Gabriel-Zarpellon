@@ -1,20 +1,21 @@
 import { StyledTitle } from "../../../styles/typography";
+import { StyledRecipeCard } from "./styles";
 
-export function RecipeCard() {
+export function RecipeCard({ recipe }) {
   return (
-    <li>
+    <StyledRecipeCard meal={recipe.meal} level={recipe.level}>
       <div>
-        <span>Type</span>
-        <img
-          src="https://ichef.bbci.co.uk/food/ic/food_16x9_1600/recipes/chorizo_gnocchi_48255_16x9.jpg"
-          alt="Gnocchi"
-        />
+        <span>{recipe.meal.toUpperCase()}</span>
+        <img src={recipe.img} alt={recipe.name} />
         <div>
-          <p>Begginer</p>
-          <p>x4</p>
+          <p>{recipe.level.toUpperCase()}</p>
+          <p> x{recipe.servings}</p>
         </div>
       </div>
-      <StyledTitle number={4}>Nome do prato</StyledTitle>
-    </li>
+      <div>
+        <StyledTitle number={4}>{recipe.name}</StyledTitle>
+        <button>View Recipe</button>
+      </div>
+    </StyledRecipeCard>
   );
 }
