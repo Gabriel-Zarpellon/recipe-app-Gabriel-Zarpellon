@@ -1,54 +1,25 @@
+import { useDispatch } from "react-redux";
 import { StyledTitle } from "../../styles/typography";
-import { StyledButton, StyledSection, StyledTextInput } from "./style";
+import { StyledRadioList, StyledSection, StyledTextInput } from "./style";
+import { searchRecipeThunk } from "../../store/modules/recipe/thunks";
+import { useState } from "react";
+import { CiSearch } from "react-icons/ci";
 
-export function SearchSection({
-  setAll,
-  setBreakfast,
-  setLunch,
-  setSupper,
-  setSnack,
-  setList,
-  all,
-  breakfast,
-  lunch,
-  supper,
-  snack,
-}) {
-  function handleClick(selected) {
-    setList(selected);
+export function SearchSection({ setMealType }) {
+  const [value, setValue] = useState("");
 
-    if (selected == "all") {
-      setAll(true);
-      setBreakfast(false);
-      setLunch(false);
-      setSupper(false);
-      setSnack(false);
-    } else if (selected == "breakfast") {
-      setAll(false);
-      setBreakfast(true);
-      setLunch(false);
-      setSupper(false);
-      setSnack(false);
-    } else if (selected == "lunch") {
-      setAll(false);
-      setBreakfast(false);
-      setLunch(true);
-      setSupper(false);
-      setSnack(false);
-    } else if (selected == "supper") {
-      setAll(false);
-      setBreakfast(false);
-      setLunch(false);
-      setSupper(true);
-      setSnack(false);
-    } else if (selected == "snack") {
-      setAll(false);
-      setBreakfast(false);
-      setLunch(false);
-      setSupper(false);
-      setSnack(true);
-    }
+  const dispatch = useDispatch();
+
+  function inputChange(selected) {
+    setMealType(selected);
   }
+
+  function submit(e) {
+    e.preventDefault();
+    dispatch(searchRecipeThunk(value));
+    setValue("");
+  }
+
   return (
     <StyledSection>
       <div>
@@ -57,41 +28,77 @@ export function SearchSection({
           else
         </StyledTitle>
       </div>
-      <StyledTextInput type="text" placeholder="Search for a recipe..." />
+      <form onSubmit={submit}>
+        <StyledTextInput
+          type="text"
+          placeholder="Search for a recipe..."
+          value={value}
+          onChange={(e) => setValue(e.target.value)}
+        />
+        <button type="submit">
+          <CiSearch size={21} />
+        </button>
+      </form>
+
       <div>
-        <ul>
+        <StyledRadioList>
           <li>
-            <StyledButton onClick={() => handleClick("all")} checked={all}>
-              ALL
-            </StyledButton>
+            <label>
+              <input
+                type="radio"
+                name="meal"
+                value="all"
+                defaultChecked
+                onChange={() => inputChange("all")}
+              />
+              <span>ALL</span>
+            </label>
           </li>
           <li>
-            <StyledButton
-              onClick={() => handleClick("breakfast")}
-              checked={breakfast}
-            >
-              BREAKFAST
-            </StyledButton>
+            <label>
+              <input
+                type="radio"
+                name="meal"
+                value="breakfast"
+                onChange={() => inputChange("breakfast")}
+              />
+              <span>BREAKFAST</span>
+            </label>
           </li>
           <li>
-            <StyledButton onClick={() => handleClick("lunch")} checked={lunch}>
-              LUNCH
-            </StyledButton>
+            <label>
+              <input
+                type="radio"
+                name="meal"
+                value="lunch"
+                onChange={() => inputChange("lunch")}
+              />
+              <span>LUNCH</span>
+            </label>
           </li>
           <li>
-            <StyledButton
-              onClick={() => handleClick("supper")}
-              checked={supper}
-            >
-              SUPPER
-            </StyledButton>
+            <label>
+              <input
+                type="radio"
+                name="meal"
+                value="supper"
+                onChange={() => inputChange("supper")}
+              />
+              <span>SUPPER</span>
+            </label>
           </li>
           <li>
-            <StyledButton onClick={() => handleClick("snack")} checked={snack}>
-              SNACK
-            </StyledButton>
+            <label>
+              <input
+                type="radio"
+                name="meal"
+                value="snack"
+                onChange={() => inputChange("snack")}
+              />
+              <span>SNACK</span>
+            </label>
           </li>
-        </ul>
+        </StyledRadioList>
       </div>
     </StyledSection>
   );
