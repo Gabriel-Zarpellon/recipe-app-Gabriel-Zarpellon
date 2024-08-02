@@ -7,12 +7,7 @@ import { StyledTitle } from "../../styles/typography";
 import { StyledHeaderBox, StyledMainBox } from "./style";
 
 export function HomePage() {
-  const [all, setAll] = useState(true);
-  const [breakfast, setBreakfast] = useState(false);
-  const [lunch, setLunch] = useState(false);
-  const [supper, setSupper] = useState(false);
-  const [snack, setSnack] = useState(false);
-  const [list, setList] = useState("");
+  const [mealType, setMealType] = useState("all");
 
   return (
     <>
@@ -30,21 +25,9 @@ export function HomePage() {
         <StyledContainer>
           <StyledMainBox>
             <Nav />
-            <SearchSection
-              setAll={setAll}
-              setBreakfast={setBreakfast}
-              setLunch={setLunch}
-              setSupper={setSupper}
-              setSnack={setSnack}
-              setList={setList}
-              all={all}
-              breakfast={breakfast}
-              lunch={lunch}
-              supper={supper}
-              snack={snack}
-            />
+            <SearchSection setMealType={setMealType} />
             <section>
-              <RecipeList />
+              <RecipeList mealType={mealType}/>
             </section>
           </StyledMainBox>
         </StyledContainer>
