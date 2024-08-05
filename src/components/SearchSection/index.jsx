@@ -5,7 +5,7 @@ import { searchRecipeThunk } from "../../store/modules/recipe/thunks";
 import { useState } from "react";
 import { CiSearch } from "react-icons/ci";
 
-export function SearchSection({ setMealType }) {
+export function SearchSection({ setMealType, setSearch }) {
   const [value, setValue] = useState("");
 
   const dispatch = useDispatch();
@@ -18,6 +18,7 @@ export function SearchSection({ setMealType }) {
     e.preventDefault();
     dispatch(searchRecipeThunk(value));
     setValue("");
+    setSearch(value);
   }
 
   return (
