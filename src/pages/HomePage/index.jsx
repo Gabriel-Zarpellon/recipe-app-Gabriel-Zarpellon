@@ -3,11 +3,33 @@ import { Nav } from "../../components/NavMenu";
 import { RecipeList } from "../../components/RecipeList";
 import { SearchSection } from "../../components/SearchSection";
 import { StyledContainer } from "../../styles/grid";
-import { StyledTitle } from "../../styles/typography";
-import { StyledHeaderBox, StyledMainBox } from "./style";
+import { StyledParagraph, StyledTitle } from "../../styles/typography";
+import {
+  StyledAddRecipeBox,
+  StyledHeaderBox,
+  StyledMainBox,
+  StyledResultBox,
+  StyledResultSection,
+} from "./style";
+import { useDispatch, useSelector } from "react-redux";
+import { searchRecipeThunk } from "../../store/modules/recipe/thunks";
+import { IoClose } from "react-icons/io5";
+import { ShowRecipeModal } from "../../components/ShowRecipeModal";
+import { AddRecipeModal } from "../../components/AddRecipeModal";
+import { addRecipeModalThunk } from "../../store/modules/modal/thunks";
 
 export function HomePage() {
+  const { openRecipe, addRecipeModal } = useSelector((state) => state);
+
   const [mealType, setMealType] = useState("all");
+  const [search, setSearch] = useState();
+
+  const dispatch = useDispatch();
+
+  function clearSearch() {
+    setSearch("");
+    dispatch(searchRecipeThunk(""));
+  }
 
   return (
     <>
@@ -25,13 +47,33 @@ export function HomePage() {
         <StyledContainer>
           <StyledMainBox>
             <Nav />
-            <SearchSection setMealType={setMealType} />
+            <SearchSection setMealType={setMealType} setSearch={setSearch} />
+            <StyledResultSection>
+              {search ? (
+                <StyledResultBox>
+                  <StyledParagraph>
+                    Results for <strong>{search}</strong>
+                  </StyledParagraph>
+                  <button onClick={clearSearch}>
+                    <IoClose size={16} />
+                  </button>
+                </StyledResultBox>
+              ) : null}
+              <StyledAddRecipeBox>
+                <button onClick={() => dispatch(addRecipeModalThunk(true))}>
+                  Add new recipe
+                </button>
+              </StyledAddRecipeBox>
+            </StyledResultSection>
+
             <section>
-              <RecipeList mealType={mealType}/>
+              <RecipeList mealType={mealType} />
             </section>
           </StyledMainBox>
         </StyledContainer>
       </main>
+      {openRecipe.value ? <ShowRecipeModal /> : null}
+      {addRecipeModal ? <AddRecipeModal /> : null}
     </>
   );
 }
