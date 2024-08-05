@@ -5,14 +5,8 @@ export const recipeList = [
     level: "advanced",
     meal: "supper",
     servings: "4",
-    ingredients: [
-      "1kg fresh store-bought gnocchi",
-      "40g butter",
-      "100g cream cheese",
-      "2 tbs rose harissa",
-      "A large handful of finely chopped chives",
-      "Grated parmesan, to serve",
-    ],
+    ingredients:
+      "1kg fresh store-bought gnocchi. 40g butter. 100g cream cheese. 2 tbs rose harissa. A large handful of finely chopped chives.Grated parmesan, to serve",
     method:
       "Cook the gnocchi in a large pan of boiling water for 2-3 minutes, or as directed on the packet, until they float to the surface and are lovely and fluffy. Using a heatproof jug, carefully scoop out 100ml of the cooking water for the sauce and then drain the gnocchi well. Melt the butter in a large non-stick frypan over a medium heat. Depending on the size of your pan, add gnocchi in batches. You don't want too much or it won't fry, so make sure there a little space around each piece. Add a pinch of salt and fry for 4-5 minutes until golden on one side. Repeat.Give the gnocchi in the pan a good shake and add the cream cheese, the remaining gnocchi, rose harissa and the reserved water. Mix well and cook for 1-2 minutes until the sauce clings to the gnocchi. Add most of the chives and mix well. Check the seasoning and add salt to taste. Divide the gnocchi between four serving bowls and top with the remaining chives and a grating of parmesan. Serve immediately.",
   },
