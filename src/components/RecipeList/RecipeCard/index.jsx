@@ -1,7 +1,11 @@
+import { useDispatch } from "react-redux";
 import { StyledTitle } from "../../../styles/typography";
 import { StyledRecipeCard } from "./styles";
+import { openRecipeThunk } from "../../../store/modules/modal/thunks";
 
 export function RecipeCard({ recipe }) {
+  const dispatch = useDispatch();
+
   return (
     <StyledRecipeCard meal={recipe.meal} level={recipe.level}>
       <div>
@@ -14,7 +18,9 @@ export function RecipeCard({ recipe }) {
       </div>
       <div>
         <StyledTitle number={4}>{recipe.name}</StyledTitle>
-        <button>View Recipe</button>
+        <button onClick={() => dispatch(openRecipeThunk(recipe))}>
+          View Recipe
+        </button>
       </div>
     </StyledRecipeCard>
   );
