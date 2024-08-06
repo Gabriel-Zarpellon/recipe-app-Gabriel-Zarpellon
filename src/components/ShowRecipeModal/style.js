@@ -3,41 +3,55 @@ import styled from "styled-components";
 export const StyledUpperRecipe = styled.div`
   width: 100%;
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
-  padding-inline: 32px;
-  padding-top: 32px;
+  padding-inline: 2rem;
+  padding-top: 2rem;
   background-color: var(--background-color);
   text-align: justify;
 
   img {
+    height: 100%;
+    width: 100%;
     max-height: 300px;
     max-width: 400px;
     border-radius: 8px;
-    margin-left: 2rem;
-  }
-
-  & > div:first-child {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-
-    & > div {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
   }
 
   @media (max-width: 690px) {
     flex-direction: column;
     gap: 1rem;
-
-    img {
-      margin: 0;
-    }
+    padding-inline: 1rem;
+    padding-top: 0;
   }
 `;
 
+export const StyledBox = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+
+  & > div:first-child {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 60%;
+
+    @media (max-width: 760px) {
+      width: 100%;
+    }
+  }
+  @media (max-width: 760px) {
+    flex-direction: column;
+
+    & > div:last-child {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+`;
 export const StyledMidRecipe = styled.div`
   width: 100%;
   display: flex;
@@ -47,6 +61,10 @@ export const StyledMidRecipe = styled.div`
   gap: 1rem;
   background-color: var(--background-color);
   text-align: justify;
+
+  @media (max-width: 690px) {
+    padding-inline: 1rem;
+  }
 `;
 
 export const StyledBottomRecipe = styled.div`
