@@ -2,12 +2,19 @@ import { useKeyDown } from "../../hooks/useKeydown";
 import { useOutclick } from "../../hooks/useOutclick";
 import { StyledTitle } from "../../styles/typography";
 import { IoClose } from "react-icons/io5";
-import { StyledModal, StyledModalBox, StyledModalTitle } from "./style";
-import { StyledContainer } from "../../styles/grid";
+import {
+  StyledModal,
+  StyledModalArea,
+  StyledModalBox,
+  StyledModalContainer,
+  StyledModalTitle,
+} from "./style";
 import { useDispatch } from "react-redux";
 import {
   addRecipeModalThunk,
+  closeEditThunk,
   closeRecipeThunk,
+  editRecipeModalThunk,
 } from "../../store/modules/modal/thunks";
 
 export function Modal({ children, title, type }) {
@@ -26,14 +33,16 @@ export function Modal({ children, title, type }) {
       dispatch(closeRecipeThunk());
     } else if (type == "add") {
       dispatch(addRecipeModalThunk(false));
+    } else if (type == "edit") {
+      dispatch(closeEditThunk());
     }
   }
   return (
     <StyledModal>
-      <StyledContainer>
-        <div ref={modalRef}>
+      <StyledModalContainer>
+        <StyledModalArea ref={modalRef}>
           <div>
-            <StyledModalTitle>
+            <StyledModalTitle type={type}>
               <StyledTitle number={4}>{title}</StyledTitle>
               <button onClick={handleClick}>
                 <IoClose size={20} />
@@ -41,9 +50,9 @@ export function Modal({ children, title, type }) {
             </StyledModalTitle>
           </div>
 
-          <StyledModalBox>{children}</StyledModalBox>
-        </div>
-      </StyledContainer>
+          <StyledModalBox type={type}>{children}</StyledModalBox>
+        </StyledModalArea>
+      </StyledModalContainer>
     </StyledModal>
   );
 }
