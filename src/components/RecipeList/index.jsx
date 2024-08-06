@@ -12,9 +12,10 @@ export function RecipeList({ mealType }) {
   useEffect(() => {
     function getRecipes() {
       dispatch(getRecipesThunk());
+      
     }
     getRecipes();
-  }, []);
+  }, [recipes]);
   
   return (
     <StyledRecipeList>
