@@ -1,10 +1,14 @@
-import { recipeList } from "../../../data";
-import { getRecipes, searchRecipe } from "./actions";
+import {
+  addRecipe,
+  deleteRecipe,
+  editRecipe,
+  getRecipes,
+  searchRecipe,
+} from "./actions";
 
 export function getRecipesThunk() {
-  const recipes = recipeList;
   return (dispatch) => {
-    dispatch(getRecipes(recipes));
+    dispatch(getRecipes());
   };
 }
 
@@ -15,5 +19,23 @@ export function searchRecipeThunk(recipeName) {
     } else {
       dispatch(searchRecipe(recipeName));
     }
+  };
+}
+
+export function addRecipeThunk(formData) {
+  return (dispatch) => {
+    dispatch(addRecipe({ ...formData, id: crypto.randomUUID() }));
+  };
+}
+
+export function editRecipeThunk(formData) {
+  return (dispatch) => {
+    dispatch(editRecipe(formData));
+  };
+}
+
+export function deleteRecipeThunk(id) {
+  return (dispatch) => {
+    dispatch(deleteRecipe(id));
   };
 }
