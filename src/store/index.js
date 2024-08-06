@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { recipeReducer } from "./modules/recipe/reducers";
+import { recipeReducer, searchReducer } from "./modules/recipe/reducers";
 import {
   addRecipeModalReducer,
   editRecipeModalReducer,
@@ -11,6 +11,7 @@ const reducer = {
   openRecipe: openRecipeReducer,
   addRecipeModal: addRecipeModalReducer,
   editRecipeModal: editRecipeModalReducer,
+  search: searchReducer,
 };
 
 export const store = configureStore({

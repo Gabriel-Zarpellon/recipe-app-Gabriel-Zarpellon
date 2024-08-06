@@ -1,5 +1,6 @@
 import {
   addRecipe,
+  clearSearch,
   deleteRecipe,
   editRecipe,
   getRecipes,
@@ -9,16 +10,6 @@ import {
 export function getRecipesThunk() {
   return (dispatch) => {
     dispatch(getRecipes());
-  };
-}
-
-export function searchRecipeThunk(recipeName) {
-  return (dispatch) => {
-    if (recipeName == "") {
-      dispatch(getRecipesThunk());
-    } else {
-      dispatch(searchRecipe(recipeName));
-    }
   };
 }
 
@@ -37,5 +28,15 @@ export function editRecipeThunk(formData) {
 export function deleteRecipeThunk(id) {
   return (dispatch) => {
     dispatch(deleteRecipe(id));
+  };
+}
+
+export function searchRecipeThunk(recipeName) {
+  return (dispatch) => {
+    if (recipeName == "") {
+      dispatch(clearSearch());
+    } else {
+      dispatch(searchRecipe(recipeName));
+    }
   };
 }

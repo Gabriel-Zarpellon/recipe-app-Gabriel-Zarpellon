@@ -1,5 +1,6 @@
 import {
   ADD_RECIPE,
+  CLEAR_SEARCH,
   DELETE_RECIPE,
   EDIT_RECIPE,
   GET_RECIPES,
@@ -9,13 +10,6 @@ import {
 export function getRecipes() {
   return {
     type: GET_RECIPES,
-  };
-}
-
-export function searchRecipe(recipeName) {
-  return {
-    type: SEARCH_RECIPE,
-    name: recipeName,
   };
 }
 
@@ -37,5 +31,18 @@ export function deleteRecipe(id) {
   return {
     type: DELETE_RECIPE,
     id: id,
+  };
+}
+
+export function searchRecipe(recipeName) {
+  return {
+    type: SEARCH_RECIPE,
+    name: recipeName,
+  };
+}
+
+export function clearSearch() {
+  return {
+    type: CLEAR_SEARCH,
   };
 }
