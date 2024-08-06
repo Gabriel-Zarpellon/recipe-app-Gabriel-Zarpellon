@@ -5,7 +5,7 @@ export const StyledTitle = styled.h1`
   ${({ number }) => {
     if (number == 1) {
       return css`
-        font-size: clamp(2.5rem, 2.143rem + 0.952vw, 3rem);
+        font-size: clamp(2rem, 2.143rem + 0.952vw, 3rem);
       `;
     } else if (number == 2) {
       return css`
