@@ -17,10 +17,13 @@ import { IoClose } from "react-icons/io5";
 import { ShowRecipeModal } from "../../components/ShowRecipeModal";
 import { AddRecipeModal } from "../../components/AddRecipeModal";
 import { addRecipeModalThunk } from "../../store/modules/modal/thunks";
+import { EditRecipeModal } from "../../components/EditRecipeModal";
 
 export function HomePage() {
-  const { openRecipe, addRecipeModal } = useSelector((state) => state);
-
+  const { openRecipe, addRecipeModal, editRecipeModal } = useSelector(
+    (state) => state
+  );
+  
   const [mealType, setMealType] = useState("all");
   const [search, setSearch] = useState();
 
@@ -74,6 +77,7 @@ export function HomePage() {
       </main>
       {openRecipe.value ? <ShowRecipeModal /> : null}
       {addRecipeModal ? <AddRecipeModal /> : null}
+      {editRecipeModal.open ? <EditRecipeModal /> : null}
     </>
   );
 }
