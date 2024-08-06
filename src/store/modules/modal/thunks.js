@@ -1,4 +1,10 @@
-import {  addRecipeModal, closeRecipe, openRecipe } from "./actions";
+import {
+  addRecipeModal,
+  closeEdit,
+  closeRecipe,
+  editRecipeModal,
+  openRecipe,
+} from "./actions";
 
 export function openRecipeThunk(recipe) {
   return (dispatch) => {
@@ -15,5 +21,17 @@ export function closeRecipeThunk() {
 export function addRecipeModalThunk(open) {
   return (dispatch) => {
     dispatch(addRecipeModal(open));
+  };
+}
+
+export function editRecipeModalThunk(recipe) {
+  return (dispatch) => {
+    dispatch(editRecipeModal(recipe));
+  };
+}
+
+export function closeEditThunk() {
+  return (dispatch) => {
+    dispatch(closeEdit());
   };
 }
