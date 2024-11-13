@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-import plate from "../../../assets/plate.svg";
+import plate from "/src/assets/plate.svg";
 
 export const StyledRecipeCard = styled.li`
   width: 100%;
